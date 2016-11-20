@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "This is a shipping coverage created in nodeJs using The power of Neo4j.",
   "main": "index.js",
+  "engines": {
+    "node": "6.8.1"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",

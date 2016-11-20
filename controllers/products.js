@@ -2,7 +2,8 @@ var express = require('express'),
 	neo4j = require('neo4j-driver').v1,
 	router = express.Router();
 
-var driver = neo4j.driver('bolt://localhost', neo4j.auth.basic('neo4j','olh234'));
+var driver = neo4j.driver(process.env.NEO4J_URL, 
+  neo4j.auth.basic(process.env.NEO4J_LOGIN,process.env.NEO4J_PASSWD));
 
 var session = driver.session();
 
