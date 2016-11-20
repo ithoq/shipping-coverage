@@ -1,0 +1,97 @@
+<% include ../partials/head %>
+<!-- BEGIN HEADER -->
+<div class="header navbar navbar-inverse ">
+<% include ../partials/menu %>
+</div>
+
+
+<!-- BEGIN CONTAINER -->
+    <div class="page-container row-fluid">
+      
+      <!-- BEGIN SIDEBAR -->
+      <div class="page-sidebar " id="main-menu">
+        <% include ../partials/left-menu %>
+      </div>
+      <!-- END SIDEBAR -->
+
+      <!-- BEGIN PAGE CONTAINER-->
+      <div class="page-content">
+        <div class="content">
+          <div class="page-title"> <a href="/product"><i class="icon-custom-left"></i></a>
+            <h3><span class="semi-bold">Gestão de produtos</span></h3>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="grid simple ">
+                <div class="grid-title no-border">
+                  <h4>Listagem de <span class="semi-bold">Produtos</span></h4>
+                  <div class="tools">
+                    <a href="javascript:;" class="collapse"></a>
+                    <a href="javascript:;" class="reload"></a>
+                  </div>
+                </div>
+                <div class="grid-body no-border">
+                  <h3><span class="semi-bold">Produtos</span> Registrados</h3>
+                  <table class="table no-more-tables">
+                    <thead>
+                      <tr>
+                        <th style="width:1%">
+                          <div class="checkbox check-default">
+                            <input id="checkbox10" type="checkbox" value="1" class="checkall">
+                            <label for="checkbox10"></label>
+                          </div>
+                        </th>
+                        <th style="width:9%">ID</th>
+                        <th style="width:22%">Product Name</th>
+                        <th style="width:22%">SKU</th>
+                        <th style="width:22%">Weight</th>
+                        <th style="width:6%">Price</th>
+                        <th style="width:6%">Ação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <% products.forEach(function(product){%>
+                     <tr>
+                        <td class="v-align-middle">
+                          <div class="checkbox check-default">
+                            <input id="checkbox11" type="checkbox" value="<%= product.id %>">
+                            <label for="checkbox11"></label>
+                          </div>
+                        </td>
+                        <td class="v-align-middle"><%= product.id %></td>
+                        <td class="v-align-middle"><%= product.name %></td>
+                        <td class="v-align-middle"><%= product.sku %></td>
+                        <td class="v-align-middle"><%= product.weight %></td>
+                        <td><span class="muted">$<%= product.price %></span>
+                        <td>
+                          <a href="/product/<%= product.sku %>" class="btn btn-primary btn-sm btn-small">Editar</a>
+                          <button type="button" class="btn btn-danger btn-sm btn-small" onclick="deleteItem('<%= product.sku %>');">Deletar</a>
+                        </span>
+                        </td>
+					<%})%>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+    <!-- END CONTAINER -->
+    <!-- END CONTAINER -->
+<% include ../partials/footer %>
+<script type="text/javascript">
+  function deleteItem(id) {
+    $.ajax({
+        url: '/product/' + id,
+        type: 'DELETE',
+        success: function(result) {
+          alert('registro deletado');
+        }
+    });
+  }
+</script>

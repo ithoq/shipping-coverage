@@ -1,0 +1,31 @@
+{
+  "name": "shipping-coverage",
+  "version": "1.0.0",
+  "description": "This is a shipping coverage created in nodeJs using The power of Neo4j.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joridos/shipping-coverage.git"
+  },
+  "keywords": [
+    "shipping-coverage",
+    "shipping",
+    "coverage"
+  ],
+  "author": "Joridos <joridoss@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joridos/shipping-coverage/issues"
+  },
+  "homepage": "https://github.com/joridos/shipping-coverage#readme",
+  "dependencies": {
+    "express": "*",
+    "body-parser": "*",
+    "ejs": "^2.4.2",
+    "morgan": "*",
+    "neo4j-driver": "*"
+  }
+}
