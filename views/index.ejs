@@ -7,7 +7,7 @@
 
 <!-- BEGIN CONTAINER -->
 <div class="page-container row-fluid">
-  
+
   <!-- BEGIN SIDEBAR -->
   <div class="page-sidebar " id="main-menu">
     <% include partials/left-menu %>
@@ -20,6 +20,24 @@
       <div class="page-title">
         <h3>Bem vindo ao sistema para gestão de abrangência <span class="semi-bold">Shipping Coverage</span></h3>
       </div>
+
+      <div class="row">
+      <% dashboad.forEach(function(information){%>
+          <div class="col-md-3 col-sm-6 spacing-bottom-sm spacing-bottom">
+            <div class="tiles <%= information.type %> added-margin">
+              <div class="tiles-body">
+                <div class="tiles-title"> Total de <%= information.name %> </div>
+                <div class="heading"> <span class="animate-number" data-value="<%= information.total %>" data-animation-duration="1200">0</span> <%= information.name %> </div>
+                <div class="progress transparent progress-small no-radius">
+                  <div class="progress-bar progress-bar-white animate-progress-bar" data-percentage="100%"></div>
+                </div>
+                <div class="description"><i class="icon-custom-up"></i><span class="text-white mini-description ">&nbsp; 4% a Mais <span class="blend">que o dia anterior</span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+      <%})%>
+    </div>
 
     </div>
   </div>
