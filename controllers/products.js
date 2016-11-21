@@ -103,7 +103,7 @@ router.delete('/product/:sku', function (req, res) {
   session
     .run(deleteProductQuery, {productSku:String(sku)})
     .then(function (result) {
-      res.redirect('/product');
+      res.send(result);
       session.close();
     })
     .catch(function (err) {

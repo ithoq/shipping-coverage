@@ -2,7 +2,8 @@ var express = require('express')
   , router = express.Router()
 
 router.use(require('./products'))
-// router.use('/cars', require('./cars'))
+router.use(require('./production-center'))
+router.use(require('./delivery-method'))
 
 router.get('/', function(req, res) {
   res.render('index')

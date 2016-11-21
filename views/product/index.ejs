@@ -7,7 +7,7 @@
 
 <!-- BEGIN CONTAINER -->
     <div class="page-container row-fluid">
-      
+
       <!-- BEGIN SIDEBAR -->
       <div class="page-sidebar " id="main-menu">
         <% include ../partials/left-menu %>
@@ -41,7 +41,6 @@
                             <label for="checkbox10"></label>
                           </div>
                         </th>
-                        <th style="width:9%">ID</th>
                         <th style="width:22%">Product Name</th>
                         <th style="width:22%">SKU</th>
                         <th style="width:22%">Weight</th>
@@ -58,14 +57,13 @@
                             <label for="checkbox11"></label>
                           </div>
                         </td>
-                        <td class="v-align-middle"><%= product.id %></td>
                         <td class="v-align-middle"><%= product.name %></td>
                         <td class="v-align-middle"><%= product.sku %></td>
                         <td class="v-align-middle"><%= product.weight %></td>
                         <td><span class="muted">$<%= product.price %></span>
                         <td>
                           <a href="/product/<%= product.sku %>" class="btn btn-primary btn-sm btn-small">Editar</a>
-                          <button type="button" class="btn btn-danger btn-sm btn-small" onclick="deleteItem('<%= product.sku %>');">Deletar</a>
+                          <button type="button" data-sku="<%= product.sku %>" class="btn delete-item btn-danger btn-sm btn-small">Deletar</a>
                         </span>
                         </td>
 					<%})%>
@@ -85,13 +83,17 @@
     <!-- END CONTAINER -->
 <% include ../partials/footer %>
 <script type="text/javascript">
-  function deleteItem(id) {
-    $.ajax({
-        url: '/product/' + id,
+
+
+jQuery('.delete-item').on('click', function () {
+  var element = jQuery(this);
+  var sku = jQuery(this).data('sku');
+  jQuery.ajax({
+        url: '/product/' + sku,
         type: 'DELETE',
         success: function(result) {
-          alert('registro deletado');
+          Messenger().post("Produto deletado!");
         }
     });
-  }
+});
 </script>

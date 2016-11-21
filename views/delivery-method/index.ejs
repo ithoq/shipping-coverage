@@ -18,20 +18,20 @@
       <div class="page-content">
         <div class="content">
           <div class="page-title"> <i class="icon-custom-left"></i>
-            <h3>Gestão de - <span class="semi-bold">Centro de produção</span></h3>
+            <h3>Gestão de - <span class="semi-bold">Método de entrega</span></h3>
           </div>
           <div class="row">
             <div class="col-md-12">
               <div class="grid simple ">
                 <div class="grid-title no-border">
-                  <h4>Listagem de <span class="semi-bold">Centro de produção</span></h4>
+                  <h4>Listagem de <span class="semi-bold">Método de entrega</span></h4>
                   <div class="tools">
                     <a href="javascript:;" class="collapse"></a>
                     <a href="javascript:;" class="reload"></a>
                   </div>
                 </div>
                 <div class="grid-body no-border">
-                  <h3><span class="semi-bold">Centros de produção</span> Registrados</h3>
+                  <h3><span class="semi-bold">Métodos de entrega</span> Registrados</h3>
                   <table class="table no-more-tables">
                     <thead>
                       <tr>
@@ -43,25 +43,25 @@
                         </th>
                         <th style="width:22%">Code</th>
                         <th style="width:22%">Name</th>
-                        <th style="width:22%">Cep</th>
+                        <th style="width:22%">Tipo</th>
                         <th style="width:6%">Ação</th>
                       </tr>
                     </thead>
                     <tbody>
-                    <% cpps.forEach(function(cpp){%>
+                    <% deliveryMethods.forEach(function(deliveryMethod){%>
                      <tr>
                         <td class="v-align-middle">
                           <div class="checkbox check-default">
-                            <input id="checkbox11" type="checkbox" value="<%= cpp.id %>">
+                            <input id="checkbox11" type="checkbox" value="<%= deliveryMethod.id %>">
                             <label for="checkbox11"></label>
                           </div>
                         </td>
-                        <td class="v-align-middle"><%= cpp.code %></td>
-                        <td class="v-align-middle"><%= cpp.name %></td>
-                        <td class="v-align-middle"><%= cpp.zip %></td>
+                        <td class="v-align-middle"><%= deliveryMethod.code %></td>
+                        <td class="v-align-middle"><%= deliveryMethod.name %></td>
+                        <td class="v-align-middle"><%= deliveryMethod.type %></td>
                         <td>
-                          <a href="/production-center/<%= cpp.code %>" class="btn btn-primary btn-sm btn-small">Editar</a>
-                          <button type="button" data-sku="<%= cpp.code %>" class="btn delete-item btn-danger btn-sm btn-small">Deletar</a>
+                          <a href="/production-center/<%= deliveryMethod.code %>" class="btn btn-primary btn-sm btn-small">Editar</a>
+                          <button type="button" data-sku="<%= deliveryMethod.code %>" class="btn delete-item btn-danger btn-sm btn-small">Deletar</a>
                         </span>
                         </td>
                       <%})%>

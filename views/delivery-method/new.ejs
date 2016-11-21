@@ -1,0 +1,135 @@
+<% include ../partials/head %>
+<!-- BEGIN HEADER -->
+<div class="header navbar navbar-inverse ">
+<% include ../partials/menu %>
+</div>
+
+
+<!-- BEGIN CONTAINER -->
+    <div class="page-container row-fluid">
+
+      <!-- BEGIN SIDEBAR -->
+      <div class="page-sidebar " id="main-menu">
+        <% include ../partials/left-menu %>
+      </div>
+      <!-- END SIDEBAR -->
+
+      <!-- BEGIN PAGE CONTAINER-->
+      <div class="page-content">
+        <div class="content">
+          <div class="page-title"> <a href="/production-center"><i class="icon-custom-left"></i></a>
+            <h3>Gestão de Método de entrega - <span class="semi-bold">Adicionar</span></h3>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="grid simple ">
+                <div class="grid-title no-border">
+                  <h4>Adiconar novo <span class="semi-bold">Método de entrega</span> para abrangência.</h4>
+                  <div class="tools">
+                    <a href="javascript:;" class="collapse"></a>
+                    <a href="javascript:;" class="reload"></a>
+                  </div>
+                </div>
+                <div class="grid-body no-border">
+                  <h3>Registrar <span class="semi-bold">Método de entrega</span></h3>
+                  <br>
+                  <form id="cpp_register_form" action="/delivery-method/new" method="post">
+                    <div class="form-group">
+                      <label class="form-label">Code</label>
+                      <span class="help">ex: "consolacao-sp-envio"</span>
+                      <div class="input-with-icon  right">
+                        <i class=""></i>
+                        <input type="text" name="code" id="code" class="form-control">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">Nome</label>
+                      <span class="help">ex: "CPP Consolação Moto"</span>
+                      <div class="input-with-icon  right">
+                        <i class=""></i>
+                        <input type="text" name="name" id="name" class="form-control">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">Tipo</label>
+                      <span class="help">ex: "deliverypartnercpp"</span>
+                      <div class="input-with-icon  right">
+                        <i class=""></i>
+                        <input type="text" name="type" id="type" class="form-control">
+                      </div>
+                    </div>
+                    <div class="form-actions">
+                      <div class="pull-right">
+                        <button type="submit" class="btn btn-danger btn-cons"><i class="icon-ok"></i> Salvar Método de entrega</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END CONTAINER -->
+<% include ../partials/footer %>
+
+<script type="text/javascript">
+    //Iconic form validation sample
+   $('#cpp_register_form').validate({
+            errorElement: 'span',
+            errorClass: 'error',
+            focusInvalid: false,
+            ignore: "",
+            rules: {
+                name: {
+                    minlength: 2,
+                    required: true
+                },
+                code: {
+                    required: true,
+                    minlength: 2,
+                },
+                type: {
+                    required: true,
+                    minlength: 2,
+                }
+            },
+
+            invalidHandler: function (event, validator) {
+              console.log(event, validator, 'invalidHandler');
+        //display error alert on form submit
+            },
+
+            errorPlacement: function (error, element) { // render error placement for each input type
+                var icon = $(element).parent('.input-with-icon').children('i');
+                var parent = $(element).parent('.input-with-icon');
+                icon.removeClass('fa fa-check').addClass('fa fa-exclamation');
+                parent.removeClass('success-control').addClass('error-control');
+            },
+
+            highlight: function (element) { // hightlight error inputs
+        var parent = $(element).parent();
+                parent.removeClass('success-control').addClass('error-control');
+            },
+
+            unhighlight: function (element) { // revert the change done by hightlight
+
+            },
+
+            success: function (label, element) {
+                var icon = $(element).parent('.input-with-icon').children('i');
+        var parent = $(element).parent('.input-with-icon');
+                icon.removeClass("fa fa-exclamation").addClass('fa fa-check');
+        parent.removeClass('error-control').addClass('success-control');
+            },
+
+            submitHandler: function (form) {
+              form.submit();
+            }
+
+        });
+         $('.select2', "#cpp_register_form").change(function () {
+            $('#cpp_register_form').validate().element($(this)); //revalidate the chosen dropdown value and show error or success message for the input
+        });
+</script>
