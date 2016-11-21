@@ -4,6 +4,7 @@ var express = require('express')
 router.use(require('./products'))
 router.use(require('./production-center'))
 router.use(require('./delivery-method'))
+router.use(require('./relationships'))
 
 router.get('/', function(req, res) {
   res.render('index')
