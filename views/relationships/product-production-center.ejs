@@ -1,0 +1,59 @@
+<% include ../partials/head %>
+<!-- BEGIN HEADER -->
+<div class="header navbar navbar-inverse ">
+<% include ../partials/menu %>
+</div>
+
+
+<!-- BEGIN CONTAINER -->
+    <div class="page-container row-fluid">
+
+      <!-- BEGIN SIDEBAR -->
+      <div class="page-sidebar " id="main-menu">
+        <% include ../partials/left-menu %>
+      </div>
+      <!-- END SIDEBAR -->
+
+      <!-- BEGIN PAGE CONTAINER-->
+      <div class="page-content">
+        <div class="content">
+          <div class="page-title"> <a href="/relationships"><i class="icon-custom-left"></i></a>
+            <h3><span class="semi-bold">Relacionamentos entre Centro de produção e Produto</span></h3>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="grid simple ">
+                <div class="grid-title no-border">
+                  <h4>Listagem de <span class="semi-bold">Relacionamentos</span></h4>
+                  <div class="tools">
+                    <a href="javascript:;" class="collapse"></a>
+                    <a href="javascript:;" class="reload"></a>
+                  </div>
+                </div>
+                <div class="grid-body no-border">
+                  <h3><span class="semi-bold">Relacionamentos</span> Registrados</h3>
+                  <table class="table no-more-tables">
+                    <thead>
+                      <tr>
+                        <th style="width:50%">Centro de produção</th>
+                        <th style="width:50%">Produto</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% relationships.forEach(function(relationship){%>
+                       <tr>
+                          <td class="v-align-middle"><%= relationship.productionCenter %></td>
+                          <td class="v-align-middle"><%= relationship.product %></td>
+                      <%})%>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END CONTAINER -->
+    <!-- END CONTAINER -->
+<% include ../partials/footer %>

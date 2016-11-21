@@ -25,7 +25,28 @@ router.get('/relationships/delivery-method-production-center', function(req, res
       });
 
       session.close();
-      res.render('relationships',{
+      res.render('relationships/delivery-method-production-center',{
+        relationships: relationshipsArr
+      });
+    })
+});
+var session = driver.session();
+
+router.get('/relationships/product-production-center', function(req, res) {
+	session
+    .run("MATCH (cp:productionCenter), (pr:product)  return pr.name, cp.name")
+    .then(function (result) {
+      var relationshipsArr = [];
+      result.records.forEach(function (record) {
+        console.log(record);
+        relationshipsArr.push({
+          productionCenter: record._fields[0],
+          product: record._fields[1],
+        });
+      });
+
+      session.close();
+      res.render('relationships/product-production-center',{
         relationships: relationshipsArr
       });
     })
