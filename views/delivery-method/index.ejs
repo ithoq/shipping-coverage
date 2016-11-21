@@ -60,7 +60,7 @@
                         <td class="v-align-middle"><%= deliveryMethod.name %></td>
                         <td class="v-align-middle"><%= deliveryMethod.type %></td>
                         <td>
-                          <a href="/production-center/<%= deliveryMethod.code %>" class="btn btn-primary btn-sm btn-small">Editar</a>
+                          <a href="/delivery-method/<%= deliveryMethod.code %>" class="btn btn-primary btn-sm btn-small">Editar</a>
                           <button type="button" data-sku="<%= deliveryMethod.code %>" class="btn delete-item btn-danger btn-sm btn-small">Deletar</a>
                         </span>
                         </td>
@@ -80,3 +80,18 @@
     <!-- END CONTAINER -->
     <!-- END CONTAINER -->
 <% include ../partials/footer %>
+<script type="text/javascript">
+
+
+jQuery('.delete-item').on('click', function () {
+  var element = jQuery(this);
+  var sku = jQuery(this).data('sku');
+  jQuery.ajax({
+        url: '/delivery-method/' + sku,
+        type: 'DELETE',
+        success: function(result) {
+          location.reload();
+        }
+    });
+});
+</script>

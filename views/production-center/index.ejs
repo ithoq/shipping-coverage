@@ -80,3 +80,18 @@
     <!-- END CONTAINER -->
     <!-- END CONTAINER -->
 <% include ../partials/footer %>
+<script type="text/javascript">
+
+
+jQuery('.delete-item').on('click', function () {
+  var element = jQuery(this);
+  var sku = jQuery(this).data('sku');
+  jQuery.ajax({
+        url: '/production-center/' + sku,
+        type: 'DELETE',
+        success: function(result) {
+          location.reload();
+        }
+    });
+});
+</script>

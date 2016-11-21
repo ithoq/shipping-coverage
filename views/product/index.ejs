@@ -92,7 +92,7 @@ jQuery('.delete-item').on('click', function () {
         url: '/product/' + sku,
         type: 'DELETE',
         success: function(result) {
-          Messenger().post("Produto deletado!");
+          location.reload();
         }
     });
 });
